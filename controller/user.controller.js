@@ -16,13 +16,14 @@ const login = async(req,res)=>{
         const {email,password}=req.body
 
         const user= await userService.checkUser(email)
-        if(ismatch){
+        if(!user){
         throw new error('user not pound')
 
         }
       const checkUser= await bcrypt.compare(password,user.password)
-      if(ismatch){
-      throw new error('invaild password')
+      if(!checkUser){
+        console.log("password err");
+     // throw new error('invaild password')
     }
 let tokendata={
     id:user._id,
