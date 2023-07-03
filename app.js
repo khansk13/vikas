@@ -1,14 +1,13 @@
 const express =require("express");
+const mongoose=require("mongoose");
 const bodyParser=require("body-parser");
-const router=require("./routes/user.routes");
+const userrouter=require("./routes/user.routes");
+const todorouter=require("./routes/todo.routes");
 
 const app=express();
 app.use(bodyParser.json());
-app.use(router);
-module.exports=app;
-
-const mongoose=require("mongoose");
-const { resourceLimits } = require("worker_threads");
+app.use(userrouter);
+app.use(todorouter);
 
 port=3001;
 
